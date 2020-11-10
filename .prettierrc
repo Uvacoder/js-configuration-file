@@ -1,0 +1,6 @@
+{
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "quoteProps": "as-needed"
+}
