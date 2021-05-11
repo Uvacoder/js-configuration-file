@@ -2,7 +2,7 @@
 
 First of all we need to install eslint and configs as dev dependencies. You can use your own config, but I will use config from airbnb:
 
-`yarn add -D eslint e`
+`yarn add -D eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react`
 
 After this we need to create eslint config file:
 
