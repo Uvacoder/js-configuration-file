@@ -1,4 +1,4 @@
-# Setup Eslint with Prettier ana airBnB
+# Setup React.js with Eslint, Prettier and airbnb
 
 First of all we need to install eslint and configs as dev dependencies. You can use your own config, but I will use config from airbnb:
 
