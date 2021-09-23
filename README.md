@@ -1,75 +1,71 @@
-# Setup React.js with Eslint, Prettier and airbnb
+Eslint:
+`yarn add -D eslint`
 
-First of all we need to install eslint and configs as dev dependencies. You can use your own config, but I will use config from airbnb:
+Eslint + React:
+`yarn add -D eslint eslint-plugin-react eslint-plugin-react-hooks eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y`
 
-`yarn add -D eslint eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react`
+Prettier:
+`yarn add -D prettier`
 
-After this we need to create eslint config file:
-
- - .eslintrc.js
-
- `module.exports = {
-  env: {
-    browser: true,
-    jest: true,
-  },
-  extends: ['airbnb', 'react-app'],
-  parserOptions: {
-    ecmaVersion: 12,
-    sourceType: 'module',
-  }
-};`
-
- add scripts to "package.json" file:
-`"scripts": {
-  ...
-  "lint:eslint": "eslint . --ext .ts,.js,.tsx,.jsx",
-  "lint:eslint:fix": "eslint . --ext .ts,.js,.tsx,.jsx --fix"
-}`
-
-Now install Prettier.  For this we need to add few packages:
+Prettier + Eslint:
 `yarn add -D prettier eslint-config-prettier eslint-plugin-prettier`
 
-Create the prettier config file:
-`{
-  "singleQuote": true,
-  "trailingComma": "all",
-  "jsxBracketSameLine": true,
-  "printWidth": 80,
-  "tabWidth": 2,
-  "useTabs": false,
-  "semi": true
-}`
+Husky + Lint-Staged:
+`yarn add -D husky lint-staged`
 
-And modify eslint config:
+Script to add in package.json inside `scripts`:
+- Eslint:
+` "start": "react-scripts start",`
+` "build": "react-scripts build",`
+` "test": "react-scripts test",`
+` "eject": "react-scripts eject",` `
+` "lint:eslint": "eslint . --ext .ts,.js,.tsx,.jsx",`
+` "lint:eslint:fix": "eslint . --ext .ts,.js,.tsx,.jsx --fix",`
+- Prettier:
+`  "prettify": "prettier --write **/*.{ts,tsx,js,jsx,json}",`
+- lint-staged:
+`    "lint-staged": "lint-staged"`
 
-`const fs = require('fs');
-const path = require('path');
-
-const prettierOptions = JSON.parse(
-  fs.readFileSync(path.resolve(__dirname, '.prettierrc'), 'utf8'),
-);
-
-module.exports = {
-  env: {
-    browser: true,
-    jest: true,
-  },
-  extends: ['airbnb-typescript', 'react-app', 'prettier', 'prettier/react'],
-  // extends: ['airbnb-typescript', 'react-app', 'prettier', 'prettier/react'], // if you're using typescript
-  plugins: ['prettier'],
-  parserOptions: {
-    ecmaVersion: 12,
-    sourceType: 'module',
-  },
-  rules: {
-    'prettier/prettier': ['error', prettierOptions],
-  },
-};`
-
-add prettier script on package.json:
-
-`"scripts": {
-  ...
-  "prettify": "prettier --write **/*.{ts,tsx,js,jsx,json}"
-}`
+- For husky, under add this in package.json under `scripts`:
+`  "husky": {`
+`    "hooks": {`
+`      "pre-commit-lint": "lint-staged",`
+`      "applypatch-msg": "echo \"[Husky] applypatch-msg\"",`
+`        "pre-applypatch": "echo \"[Husky] pre-applypatch\"",`
+`        "post-applypatch": "echo \"[Husky] post-applypatch\"",`
+`        "pre-commit": "echo \"[Husky] pre-commit\"",`
+`        "pre-merge-commit": "echo \"[Husky] pre-merge-commit\"",`
+`        "prepare-commit-msg": "echo \"[Husky] prepare-commit-msg\"",`
+`        "commit-msg": "echo \"[Husky] commit-msg\"",`
+`        "post-commit": "echo \"[Husky] post-commit\"",`
+`        "pre-rebase": "echo \"[Husky] pre-rebase\"",`
+`        "post-checkout": "echo \"[Husky] post-checkout\"",`
+`        "post-merge": "echo \"[Husky] post-merge\"",`
+`        "pre-push": "echo \"[Husky] pre-push\"",`
+`        "pre-receive": "echo \"[Husky] pre-receive\"",`
+`        "update": "echo \"[Husky] update\"",`
+`        "post-receive": "echo \"[Husky] post-receive\"",`
+`        "post-update": "echo \"[Husky] post-update\"",`
+`        "reference-transaction": "echo \"[Husky] reference-transaction\"",`
+`        "push-to-checkout": "echo \"[Husky] push-to-checkout\"",`
+`        "pre-auto-gc": "echo \"[Husky] pre-auto-gc\"",`
+`        "post-rewrite": "echo \"[Husky] post-rewrite\"",`
+`        "sendemail-validate": "echo \"[Husky] sendemail-validate\"",`
+`        "fsmonitor-watchman": "echo \"[Husky] fsmonitor-watchman\"",`
+`        "p4-changelist": "echo \"[Husky] p4-changelist\"",`
+`        "p4-prepare-changelist": "echo \"[Husky] p4-prepare-changelist\"",`
+`        "p4-post-changelist": "echo \"[Husky] p4-post-changelist\"",`
+`        "p4-pre-submit": "echo \"[Husky] p4-pre-submit\"",`
+`        "post-index-change": "echo \"[Husky] post-index-change\""`
+`    }`
+`  },`
+`  "lint-staged": {`
+`    "*.{ts,tsx,js,jsx}": [`
+`      "yarn lint:eslint:fix && yarn prettify",`
+`      "git add --force"`
+`    ],`
+`    "*.{ts,tsx,js,jsx,json}": [`
+`      "yarn lint:eslint:fix && yarn prettify",`
+`      "git add --force"`
+`    ]`
+`  },`

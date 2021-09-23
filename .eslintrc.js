@@ -8,15 +8,21 @@ const prettierOptions = JSON.parse(
 module.exports = {
   env: {
     browser: true,
-    jest: true,
+    es2021: true,
+    node: true,
   },
-  extends: ['airbnb-react', 'react-app', 'prettier', 'prettier/react'],
+  extends: ['plugin:react/recommended', 'airbnb', 'prettier'],
   parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['prettier'],
+  plugins: ['react', 'jsx-a11y', 'import', 'prettier'],
   rules: {
     'prettier/prettier': ['error', prettierOptions],
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
   },
 };
