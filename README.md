@@ -66,4 +66,5 @@ Add this inside `package.json`:
       "yarn lint:eslint:fix && yarn prettify",
       "git add --force"
     ]
-  },```
+  },
+  ```
