@@ -13,21 +13,19 @@ Prettier + Eslint:
 Husky + Lint-Staged:
 `yarn add -D husky lint-staged`
 
-Script to add in package.json inside `scripts`:
-- Eslint:
-` "start": "react-scripts start",`
-` "build": "react-scripts build",`
-` "test": "react-scripts test",`
-` "eject": "react-scripts eject",` `
-` "lint:eslint": "eslint . --ext .ts,.js,.tsx,.jsx",`
-` "lint:eslint:fix": "eslint . --ext .ts,.js,.tsx,.jsx --fix",`
-- Prettier:
-`  "prettify": "prettier --write **/*.{ts,tsx,js,jsx,json}",`
-- lint-staged:
-`    "lint-staged": "lint-staged"`
-
-- For husky, under add this in package.json under `scripts`:
-```  "husky": {
+Add this inside `package.json`:
+``` 
+ "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint:eslint": "eslint . --ext .ts,.js,.tsx,.jsx",
+    "lint:eslint:fix": "eslint . --ext .ts,.js,.tsx,.jsx --fix",
+    "prettify": "prettier --write **/*.{ts,tsx,js,jsx,json}",
+    "lint-staged": "lint-staged"
+  },
+  "husky": {
     "hooks": {
       "pre-commit-lint": "lint-staged",
       "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
