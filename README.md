@@ -1,17 +1,37 @@
+Configuration file for ESlint, Prettier and Husky.
+It can work mainly with React.js, but with few modification on eslintrc.js, it can work with ES6.
+
+Package Needed:
+
 Eslint:
-```yarn add -D eslint```
+```
+yarn add -D eslint
+```
+
+Then run:
+```
+yarn run eslint --init
+```
 
 Eslint + React:
-```yarn add -D eslint eslint-plugin-react eslint-plugin-react-hooks eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y```
+```
+yarn add -D eslint eslint-plugin-react eslint-plugin-react-hooks eslint-config-airbnb eslint-plugin-import eslint-plugin-jsx-a11y
+```
 
 Prettier:
-```yarn add -D prettier```
+```
+yarn add -D prettier
+```
 
 Prettier + Eslint:
-```yarn add -D prettier eslint-config-prettier eslint-plugin-prettier```
+```
+yarn add -D prettier eslint-config-prettier eslint-plugin-prettier
+```
 
 Husky + Lint-Staged:
-```yarn add -D husky lint-staged```
+```
+yarn add -D husky lint-staged
+```
 
 Add this inside `package.json`:
 ``` 
