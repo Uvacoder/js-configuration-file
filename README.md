@@ -33,6 +33,8 @@ Husky + Lint-Staged:
 yarn add -D husky lint-staged
 ```
 
+* [How to use Husky with Hooks:](https://typicode.github.io/husky/#/?id=create-a-hook) 
+
 Add this inside `package.json`:
 ``` 
  "scripts": {
